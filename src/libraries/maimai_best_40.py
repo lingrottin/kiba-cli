@@ -690,19 +690,20 @@ def computeRa(ds: float, achievement: float, spp: bool = False) -> int:
     return math.floor(ds * (min(100.5, achievement) / 100) * baseRa)
 
 
-async def get_player_data(payload: Dict):
-    async with aiohttp.request("POST", "https://www.diving-fish.com/api/maimaidxprober/query/player", json=payload) as resp:
-        if resp.status == 400:
-            return None, 400
-        elif resp.status == 403:
-            return None, 403
-        player_data = await resp.json()
-        return player_data, 0
+def get_player_data(payload: Dict):
+    resp=requests.post("https://www.diving-fish.com/api/maimaidxprober/query/player", json=payload)
+    if resp.status_code == 400:
+        return None, 400
+    elif resp.status_code == 403:
+        return None, 403
+    elif resp.status_code != 200:
+        return None, resp.status_code
+    return resp.json(), 200
 
 
-async def generate(payload: Dict) -> (Optional[Image.Image], bool):
-    obj, success = await get_player_data(payload)
-    if success != 0: return None, success
+def generate(payload: Dict):
+    obj, success = get_player_data(payload)
+    if success != 200: return None, success
     qqId = None
     b50 = False
     if 'qq' in payload:
@@ -721,4 +722,4 @@ async def generate(payload: Dict) -> (Optional[Image.Image], bool):
     for c in dx:
         dx_best.push(ChartInfo.from_json(c))
     pic = DrawBest(sd_best, dx_best, obj["nickname"], obj["rating"] + obj["additional_rating"], obj["rating"], qqId, b50).getDir()
-    return pic, 0
+    return pic, 200
