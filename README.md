@@ -1,3 +1,23 @@
+# Kiba-cli
+基于 Kiba 的舞萌 b40/b50 图片生成方案，已经精简到只有 Best40 和 Best50 的功能。  
+~~这个 repo 因此应该叫 Kiba-b40-b50 但是改了会改一大堆东西所以就没改~~  
+
+## Usage
+```bash
+cli.py b40 qq 11223345
+cli.py b40 username examplename
+cli.py b50 qq 11223345
+cli.py b50 username examplenale
+```
+正常状态下输出 base64 编码的 b40/b50 图片 URI 。  
+（类似于 `base64://<图片编码>` ）
+如果无法从查分器获取则输出对应状态的中文。
+
+## Credits
+* [Diving-Fish](https://github.com/Diving-Fish) - Mai-bot 和 Maimaidx-prober
+* [KilluaSakata](https://github.com/KilluaSakata) 等 - Kiba
+
+<details><summary>点击展开原 README</summary>
 <div align="center">
 
 # Kiba
@@ -138,3 +158,5 @@ b40 / b50 | 根据[查分器](https://www.diving-fish.com/maimaidx/prober/)数�
 使用此软件代码须遵守 “MIT 协议” 。
 
 您可以自由使用本项目的代码用于商业或非商业的用途，但必须附带 MIT 协议。
+
+</details>
