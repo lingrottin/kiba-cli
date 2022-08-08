@@ -13,6 +13,9 @@ cli.py b50 username examplenale
 （类似于 `base64://<图片编码>` ）
 如果无法从查分器获取则输出对应状态的中文。
 
+## About static.7z
+这个文件已经从 repo 里删除。（如果你想看历史 commit 的话那么它还没有被删除）总之，它可以在 [University of Fool](https://uof.edu.kg/maimai-static-files.7z) 被下载到。
+
 ## Credits
 * [Diving-Fish](https://github.com/Diving-Fish) - Mai-bot 和 Maimaidx-prober
 * [KilluaSakata](https://github.com/KilluaSakata) 等 - Kiba
